@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button,
+input {
+  outline: none;
+}
+
+table tr>td:first-child {
+  text-align: center;
+}
+
+.edit-container {
+  @apply mx-auto;
+  width: 500px;
+}
+
+.input-control {
+  @apply pt-2;
+}
+
+.input-label {
+  @apply w-full font-medium;
+}
+
+.input-field {
+  @apply w-full border border-black px-2 py-1;
+}
+
+.input-action {
+  @apply flex justify-end pt-2;
+}
+
+.input-action .action-button {
+  @apply flex-initial px-2 py-1;
+}
+
+.input-action .action-button+.action-button {
+  @apply ml-2;
+}
+
+.input-action .action-button.red {
+  @apply bg-red-600 text-white;
+}
+
+.input-action .action-button.green {
+  @apply bg-green-600 text-white;
+}
