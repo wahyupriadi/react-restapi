@@ -1,9 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { wrapper } from '../redux/store'
+import axios from 'axios'
 
-const editMember = () => {
+const editMember = ({ data, ...props }) => {
     return (
         <div>
-            <h2 className="text-xl text-center py-4">Edit Data Pengguna</h2>
+            <h2 className="text-xl text-center py-4">Edit Data Pengguna ID {props.id}</h2>
             <form className="edit-container">
                 <div className="input-control">
                     <label className="input-label">Nama</label>
@@ -22,4 +25,8 @@ const editMember = () => {
     )
 }
 
-export default editMember
+const mapStateToProps = (state) => ({
+    id: state.users.id
+})
+
+export default connect(mapStateToProps, null)(editMember)
