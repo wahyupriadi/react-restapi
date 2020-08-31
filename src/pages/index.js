@@ -30,7 +30,7 @@ const Home = ({ data }) => {
                 <td className="p-2">{item.name}</td>
                 <td className="p-2">{item.phone}</td>
                 <td className="p-2 text-xs">
-                  <button className="px-2 py-1 bg-gray-300 mr-2">Edit</button>
+                  <button className="px-2 py-1 bg-gray-200 mr-2">Edit</button>
                   <button className="px-2 py-1 bg-red-400 text-white">Delete</button>
                 </td>
               </tr>
