@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { connect } from 'react-redux'
 import { wrapper } from '../redux/store'
 import { getUserId } from "../redux/actions"
+import { GET_USER_LIST } from "../redux/actionTypes"
 import axios from 'axios';
 
 // export const getServerSideProps = async () => {
@@ -18,13 +19,13 @@ export const getServerSideProps = wrapper.getServerSideProps(
     async ({ store, req, res, ...etc }) => {
       const response = await axios.get("https://my-json-server.typicode.com/wahyupriadi/db-member/users");
       store.dispatch({
-        type: 'GET_USER_LIST',
+        type: GET_USER_LIST,
         payload: response?.data
       })
     }
 );
 
-const Home = ({ data, ...props }) => {
+const Home = ({ users, ...props }) => {
   return (
     <div>
       <h2 className="text-xl text-center py-4">Data Pengguna</h2>
@@ -35,7 +36,7 @@ const Home = ({ data, ...props }) => {
           <th>Telepon</th>
           <th>Aksi</th>
         </tr>
-          {/* {data.map(item => {
+          {users.list.map(item => {
             return (
               <tr key={item.id} className="border border-black">
                 <td className="p-2">{item.id}</td>
@@ -49,18 +50,18 @@ const Home = ({ data, ...props }) => {
                 </td>
               </tr>
             )
-          })} */}
+          })}
       </table>
     </div>
   )
 }
 
-const mapStateToProps = (state) => ({
-  userId: state.users.id
-});
+// const mapStateToProps = (state) => ({
+//   userId: state.users.id
+// });
 
 const mapDispatchToProps = {
   getUserId: getUserId
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(state => state, mapDispatchToProps)(Home);

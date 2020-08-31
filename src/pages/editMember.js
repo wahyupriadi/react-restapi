@@ -3,26 +3,25 @@ import { connect } from 'react-redux'
 import { wrapper } from '../redux/store'
 import axios from 'axios'
 
-export const getServerSideProps = async () => {
-    const response = await axios.get(`https://my-json-server.typicode.com/wahyupriadi/db-member/users`);
-    return {
-        props: {
-            data: response?.data,
-        },
-    };
-};
+// export const getServerSideProps = async () => {
+//     const response = await axios.get(`https://my-json-server.typicode.com/wahyupriadi/db-member/users`);
+//     return {
+//         props: {
+//             data: response?.data,
+//         },
+//     };
+// };
 
 // export const getServerSideProps = wrapper.getServerSideProps(
-//     ({ store, req, res, ...etc }) => {
-//         // console.log('2. Page.getServerSideProps uses the store to dispatch things');
-//         console.log(store.getState())
+//      ({ store, req, res, ...etc }) => {
+        
 //     }
 // );
 
-const editMember = ({ data, ...props }) => {
+const editMember = ({ users }) => {
     return (
         <div>
-            <h2 className="text-xl text-center py-4">Edit Data Pengguna ID {props}</h2>
+            <h2 className="text-xl text-center py-4">Edit Data Pengguna ID</h2>
             <form className="edit-container">
                 <div className="input-control">
                     <label className="input-label">Nama</label>
@@ -41,8 +40,4 @@ const editMember = ({ data, ...props }) => {
     )
 }
 
-const mapStateToProps = (state) => ({
-    id: state.users.id
-})
-
-export default connect(mapStateToProps, null)(editMember)
+export default connect(state => state)(editMember)
