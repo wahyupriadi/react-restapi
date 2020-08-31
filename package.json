@@ -17,10 +17,12 @@
     "tailwindcss": "^1.7.3"
   },
   "devDependencies": {
+    "next-redux-wrapper": "^6.0.2",
     "normalize.css": "^8.0.1",
     "postcss-preset-env": "^6.7.0",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
   }
 }
