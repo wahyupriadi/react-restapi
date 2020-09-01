@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { wrapper } from '../redux/store'
 import axios from 'axios'
 
+
+// let id = null;
 // export const getServerSideProps = async () => {
 //     const response = await axios.get(`https://my-json-server.typicode.com/wahyupriadi/db-member/users`);
 //     return {
@@ -12,11 +14,11 @@ import axios from 'axios'
 //     };
 // };
 
-// export const getServerSideProps = wrapper.getServerSideProps(
-//      ({ store, req, res, ...etc }) => {
+export const getServerSideProps = wrapper.getServerSideProps(
+     ({ store, req, res, ...etc }) => {
         
-//     }
-// );
+    }
+);
 
 const editMember = ({ users }) => {
     return (
