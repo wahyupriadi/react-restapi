@@ -8,4 +8,4 @@ const initialState = {}
 const middleware = [thunk];
 const store = (context) => createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(...middleware)));
 
-export const wrapper = createWrapper(store, {debug: true});
+export const wrapper = createWrapper(store, {debug: false});

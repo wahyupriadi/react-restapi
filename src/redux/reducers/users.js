@@ -1,6 +1,6 @@
 import "../actions"
 import { GET_USER_ID, GET_USER_LIST } from "../actionTypes"
-// import { HYDRATE } from 'next-redux-wrapper';
+import { HYDRATE } from 'next-redux-wrapper';
 
 const initialState = {
     list: null,
@@ -12,8 +12,8 @@ const initialState = {
 
 const users = (state = initialState, action) => {
     switch (action.type) {
-        // case HYDRATE:
-        //     return {...state, ...action.payload};
+        case HYDRATE:
+            return {...state, ...action.payload};
         case GET_USER_ID:
             return {
                 ...state, data: { ...state.data, id: action.payload }
