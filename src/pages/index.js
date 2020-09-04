@@ -17,6 +17,7 @@ import axios from 'axios';
 
 export const getServerSideProps = wrapper.getServerSideProps(
     async ({ store, req, res, ...etc }) => {
+      console.log('2. Page.getServerSideProps uses the store to dispatch things');
       const response = await axios.get("https://my-json-server.typicode.com/wahyupriadi/db-member/users");
       store.dispatch({
         type: GET_USER_LIST,
@@ -30,13 +31,16 @@ const Home = ({ users, ...props }) => {
     <div>
       <h2 className="text-xl text-center py-4">Data Pengguna</h2>
       <table className="table table-auto border-collapse border border-black mx-auto">
-        <tr className="bg-gray-200 border-black">
-          <th>id</th>
-          <th>Nama</th>
-          <th>Telepon</th>
-          <th>Aksi</th>
-        </tr>
-          {users.list.map(item => {
+        <thead>
+          <tr className="bg-gray-200 border-black">
+            <th>id</th>
+            <th>Nama</th>
+            <th>Telepon</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+        {users.list.map(item => {
             return (
               <tr key={item.id} className="border border-black">
                 <td className="p-2">{item.id}</td>
@@ -51,6 +55,7 @@ const Home = ({ users, ...props }) => {
               </tr>
             )
           })}
+        </tbody>
       </table>
     </div>
   )

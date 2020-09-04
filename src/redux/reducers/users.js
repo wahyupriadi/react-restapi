@@ -13,7 +13,7 @@ const initialState = {
 const users = (state = initialState, action) => {
     switch (action.type) {
         case HYDRATE:
-            return {...state, ...action.payload};
+            return {...state, ...action.payload.users};
         case GET_USER_ID:
             return {
                 ...state, data: { ...state.data, id: action.payload }

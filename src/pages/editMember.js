@@ -16,7 +16,7 @@ import axios from 'axios'
 
 export const getServerSideProps = wrapper.getServerSideProps(
      ({ store, req, res, ...etc }) => {
-        console.log(store.getState())
+        console.log('2. Page.getServerSideProps uses the store to dispatch things');
     }
 );
 
