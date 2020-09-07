@@ -6,26 +6,6 @@ import { getUserId } from "../redux/actions"
 import { GET_USER_LIST } from "../redux/actionTypes"
 import axios from 'axios';
 
-// export const getServerSideProps = async () => {
-//   const response = await axios.get("https://my-json-server.typicode.com/wahyupriadi/db-member/users");
-//   return {
-//       props: {
-//           data: response?.data,
-//       },
-//   };
-// };
-
-export const getServerSideProps = wrapper.getServerSideProps(
-    async ({ store, req, res, ...etc }) => {
-      console.log('2. Page.getServerSideProps uses the store to dispatch things');
-      const response = await axios.get("https://my-json-server.typicode.com/wahyupriadi/db-member/users");
-      store.dispatch({
-        type: GET_USER_LIST,
-        payload: response?.data
-      })
-    }
-);
-
 const Home = ({ users, ...props }) => {
   return (
     <div>
@@ -40,7 +20,7 @@ const Home = ({ users, ...props }) => {
           </tr>
         </thead>
         <tbody>
-        {users.list.map(item => {
+          {users.list.map(item => {
             return (
               <tr key={item.id} className="border border-black">
                 <td className="p-2">{item.id}</td>
@@ -61,9 +41,26 @@ const Home = ({ users, ...props }) => {
   )
 }
 
-// const mapStateToProps = (state) => ({
-//   userId: state.users.id
-// });
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   async ({ store, req, res, ...etc }) => {
+//     console.log('2. Page.getServerSideProps uses the store to dispatch things');
+//     const response = await axios.get("https://my-json-server.typicode.com/wahyupriadi/db-member/users");
+//     store.dispatch({
+//       type: GET_USER_LIST,
+//       payload: response?.data
+//     })
+//   }
+// );
+
+Home.getInitialProps = async ({ store, req, res, ...etc }) => {
+  console.log('2. Page.getServerSideProps uses the store to dispatch things');
+  const response = await axios.get("https://my-json-server.typicode.com/wahyupriadi/db-member/users");
+  store.dispatch({
+    type: GET_USER_LIST,
+    payload: response?.data
+  })
+}
+
 
 const mapDispatchToProps = {
   getUserId: getUserId

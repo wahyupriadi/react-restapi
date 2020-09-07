@@ -4,24 +4,8 @@ import { wrapper } from '../redux/store'
 import axios from 'axios'
 
 
-// let id = null;
-// export const getServerSideProps = async () => {
-//     const response = await axios.get(`https://my-json-server.typicode.com/wahyupriadi/db-member/users`);
-//     return {
-//         props: {
-//             data: response?.data,
-//         },
-//     };
-// };
-
-export const getServerSideProps = wrapper.getServerSideProps(
-     ({ store, req, res, ...etc }) => {
-        console.log('2. Page.getServerSideProps uses the store to dispatch things');
-    }
-);
-
 const editMember = (state) => {
-    console.log("editMember -> state", state)
+    console.log(state)
     return (
         <div>
             <h2 className="text-xl text-center py-4">Edit Data Pengguna ID</h2>
@@ -42,5 +26,12 @@ const editMember = (state) => {
         </div>
     )
 }
+
+// export const getServerSideProps = wrapper.getServerSideProps(
+//     async ({ store, req, res, ...etc }) => {
+//       console.log('2. Page.getServerSideProps uses the store to dispatch things');
+//       const response = await axios.get(`https://my-json-server.typicode.com/wahyupriadi/db-member/users/`);
+//     }
+//   );
 
 export default connect(state => state)(editMember)

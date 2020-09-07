@@ -7,7 +7,7 @@ import logger from 'redux-logger'
 
 const initialState = {}
 const middleware = [thunk];
-middleware.push(logger)
+// middleware.push(logger)
 const store = (context) => createStore(rootReducer, applyMiddleware(...middleware));
 
 export const wrapper = createWrapper(store, {debug: true}); 

@@ -7,12 +7,13 @@ const initialState = {
     data: {
         id: null
     },
-    error: false
+    error: false 
 }
 
 const users = (state = initialState, action) => {
     switch (action.type) {
         case HYDRATE:
+            console.log("HYDRATE", action)
             return {...state, ...action.payload.users};
         case GET_USER_ID:
             return {
